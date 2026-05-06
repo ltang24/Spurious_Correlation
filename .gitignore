@@ -3,3 +3,7 @@ __pycache__/
 venv/
 data/travelplanner/raw.json
 data/intercode_ctf/raw.json
+venv/
+.venv/
+__pycache__/
+.DS_Store
