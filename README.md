@@ -86,7 +86,7 @@ spurious-memory-benchmark/
 ## Setup
 
 ```bash
-git clone https://github.com/rupali559/spurious-memory-benchmark.git
+git clone <anonymous-repository-url>
 cd spurious-memory-benchmark
 . venv/bin/activate
 pip install -r requirements.txt
