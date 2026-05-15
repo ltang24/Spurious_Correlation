@@ -1,4 +1,4 @@
-# Spurious Memory Benchmark
+# CAMEL: Calibrating Agentic Memory Against Spurious Correlations
 
 > **Can LLMs tell the difference between a real cause and a lucky coincidence — even across multi-turn interactions with memory?**
 
@@ -15,13 +15,16 @@ This benchmark systematically tests whether large language models can distinguis
 
 ## Datasets
 
-| Dataset | Instances | Task Type | Venue | Source |
-|---|---|---|---|---|
-| **TravelPlanner** | 225 | Multi-turn travel planning | ICML 2024 | [GitHub](https://github.com/OSU-NLP-Group/TravelPlanner) |
-| **InterCode-CTF** | 100 | Multi-turn bash interaction | NeurIPS 2023 | [GitHub](https://github.com/princeton-nlp/intercode) |
+We evaluate spurious correlations in agentic memory across four representative agentic reasoning benchmarks:
 
-Both datasets involve extended, multi-turn task completion — making them ideal for stress-testing memory systems that accumulate context over time.
+| Dataset | Task Type | Description |
+| --- | --- | --- |
+| ALFWorld | Embodied household task completion | Text-based household environments requiring multi-step action planning. |
+| ScienceWorld | Interactive science experiments | Science-oriented environments where agents perform structured experimental tasks. |
+| LoCoMo | Long-term dialogue memory | Long-context conversational settings that test memory over extended interactions. |
+| WebShop | Goal-directed online shopping | Web-based shopping tasks requiring product search, comparison, and decision making. |
 
+These datasets cover embodied tasks, scientific reasoning, long-term conversation, and web-based decision making, providing diverse settings for evaluating how spurious correlations affect memory-enabled LLM agents.
 ---
 
 ## How It Works
@@ -233,12 +236,29 @@ Note: Some candidates may be correlated but not causal.
 
 ---
 
-## Models and Systems Used
+## Models and Memory Systems Used
 
-- **Qwen2.5-1.5B-Instruct** — Local LLM for all pipeline steps. [HuggingFace](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct)
-- **Mem0** — Memory system for LLM agents. [GitHub](https://github.com/mem0ai/mem0)
-- **A-MEM** — Agentic memory system. [GitHub](https://github.com/WujiangXu/A-MEM)
+### LLM Backbones
 
+We evaluate each memory system with three LLM backbones:
+
+- Llama-4-Maverick-17B
+- Qwen3.6-27B
+- Mistral-Small-3.2-24B
+
+### Memory Systems
+
+We evaluate representative agentic memory systems from two architecture families:
+
+- **Embedding-based memory**
+  - A-Mem
+  - Mem0
+
+- **Graph-based memory**
+  - G-Memory
+  - AriGraph
+
+We also include a **No-Memory** baseline, where the raw LLM is evaluated without an external memory module.
 ---
 
 ## References
